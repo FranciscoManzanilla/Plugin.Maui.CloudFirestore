@@ -9,19 +9,33 @@ Install Nuget package to each projects.
 
 [Plugin.CloudFirestore](https://www.nuget.org/packages/Plugin.CloudFirestore/) [![NuGet](https://img.shields.io/nuget/vpre/Plugin.CloudFirestore.svg?label=NuGet)](https://www.nuget.org/packages/Plugin.CloudFirestore/)
 
-### iOS
-* Add GoogleService-Info.plist to iOS project. Select BundleResource as build action.
-* Initialize as follows in AppDelegate. 
-```C#
-Firebase.Core.App.Configure();
-```
-
 ### Android
-* Add google-services.json to Android project. Select GoogleServicesJson as build action. (If you can't select GoogleServicesJson, reload this android project.)
-* Target framework version needs to be Android 10.0.
+* Add google-services.json to Android project. Select GoogleServicesJson as build action. (If you can't select GoogleServicesJson, reload this android project.) Same like Xamarin.Forms
+* Target framework version needs to be Android >= 10.0.
+* Add this code in your shared-project
+```C#
+    public class CloudF
+    {
+        public ICloudFirestore GetFirestore() //Necessary for work in MAUI
+        {
+            // Inicializa Firestore. La librería se encarga de la configuración.
+            return CrossCloudFirestore.Current;
+        }
 
-## Upgrade from Version 3 to 4
-Refer to [Upgrade](Upgrade.md)
+    add another logic here was you needid.....
+    }
+```
+## Usage call first from anywere you use
+
+```C#
+   CloudF cloudF = new CloudF();
+
+  #to inicialized Firestore
+  public void LoadFirestore()
+  {
+      cloudF.GetFirestore();
+  }
+```
 
 ## Usage
 ### Get
