@@ -22,7 +22,7 @@ Install Nuget package to each projects.
             return CrossCloudFirestore.Current;
         }
 
-    add another logic here was you needid.....
+    add another logic here was you needid, like CRUD.....
     }
 ```
 ## Usage call first from anywere you use
@@ -30,7 +30,7 @@ Install Nuget package to each projects.
 ```C#
    CloudF cloudF = new CloudF();
 
-  #to inicialized Firestore
+  ///to inicialized Firestore
   public void LoadFirestore()
   {
       cloudF.GetFirestore();
